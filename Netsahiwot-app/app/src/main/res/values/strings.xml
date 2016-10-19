@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name">NetsaHiwot</string>
+    <string name="stringsfirsage">18</string>
+    <string-array name="menu_list">
+        <item>What is pornography?</item>
+        <item>Is pornography a sin?</item>
+        <item>Effect of pornography on family Life</item>
+        <item>Pornography and psycology</item>
+    </string-array>
+    <string-array name="age_array">
+        <item>@string/stringsfirsage</item>
+        <item>18-32</item>
+        <item>32></item>
+    </string-array>
+    <string name="search_hint">Insert the Article title...</string>
+
+    <string name="str_start_now">Start Now</string>
+    <string name="str_next">Next</string>
+    <string name="str_done">Done</string>
+    <string name="str_results">Results</string>
+    <string name="str_gotohome">Go to Home</string>
+
+
+    <string-array name="occurence">
+        <item>Once</item>
+        <item>Weekly</item>
+    </string-array>
+
+    <string-array name="pref_alarm_play_time_entries">
+        <item>10 seconds</item>
+        <item>30 seconds</item>
+        <item>1 minute</item>
+        <item>2 minutes</item>
+        <item>3 minutes</item>
+        <item>5 minutes</item>
+    </string-array>
+
+
+    <string-array name="pref_alarm_play_time_values">
+        <item>10</item>
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>180</item>
+        <item>300</item>
+    </string-array>
+
+
+
+    <string name="verse1">1 Peter 4:10
+10 Each of you should use whatever gift you have received to serve others, as faithful stewards of God’s grace in its various forms. </string>
+    <string name="Verse2">Hosea 6:6
+6  For I desire mercy, not sacrifice, and acknowledgment of God rather than burnt offerings.</string>
+    <string name="verse3">Zechariah 8:16
+16  These are the things you are to do: Speak the truth to each other, and render true and sound judgment in your courts;</string>
+
+    //menu Title and note
+
+    <string name="menu1Title">MenuTitle1</string>
+    <string name="menu1Note">MenuNote1</string>
+
+
+    <string name="menu2Title">MenuTitle2</string>
+    <string name="menu2Note">MenuNote2</string>
+
+
+
+    <string name="menu3Title">MenuTitle3</string>
+    <string name="menu3Note">MenuNote3</string>
+
+    <string name="menu4Title">MenuTitle4</string>
+    <string name="menu4Note">MenuNote4</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
