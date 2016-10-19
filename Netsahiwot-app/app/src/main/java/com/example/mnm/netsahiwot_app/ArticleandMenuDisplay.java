@@ -22,7 +22,7 @@ public class ArticleandMenuDisplay extends AppCompatActivity {
     ImageView menuImage;
     DatabaseAdaptor DbHelper;
     FileManager FM;
-    ///cometnou
+    ///comet
 
 
     @Override
