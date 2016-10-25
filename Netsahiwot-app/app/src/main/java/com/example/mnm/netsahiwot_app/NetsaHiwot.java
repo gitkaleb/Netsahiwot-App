@@ -25,7 +25,7 @@ public class NetsaHiwot extends Application {
     private static final int JOB_ID = 100;
     private JobScheduler myJobScheduler;
     private FileManager FM;
-
+//
     @Override
     public void onCreate() {
 
