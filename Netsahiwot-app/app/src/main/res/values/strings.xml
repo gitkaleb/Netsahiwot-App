@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">NetsaHiwot</string>
     <string name="stringsfirsage">18</string>
+    <string name="picture_transition_name" translatable="false">picture_transition</string>
     <string-array name="menu_list">
         <item>What is pornography?</item>
         <item>Is pornography a sin?</item>
@@ -64,7 +65,6 @@
     <string name="menu2Note">MenuNote2</string>
 
 
-
     <string name="menu3Title">MenuTitle3</string>
     <string name="menu3Note">MenuNote3</string>
 
@@ -75,4 +75,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

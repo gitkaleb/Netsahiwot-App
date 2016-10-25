@@ -1,10 +1,19 @@
 package com.example.mnm.netsahiwot_app;
 
+import android.Manifest;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuInflater;
@@ -22,6 +31,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.andexert.library.RippleView;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -29,21 +39,35 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.mnm.netsahiwot_app.Database.DatabaseAdaptor;
 import com.example.mnm.netsahiwot_app.FileManager.FileManager;
+import com.example.mnm.netsahiwot_app.Testimony.App;
+import com.example.mnm.netsahiwot_app.Testimony.Snap;
+import com.example.mnm.netsahiwot_app.Testimony.SnapAdapter;
 
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,AdapterView.OnItemClickListener, BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener  {
     private SliderLayout mDemoSlider;
+    public static final String ORIENTATION = "orientation";
+    SupportMapFragment sMapFragment;
+    private RecyclerView mRecyclerView;
+    private boolean mHorizontal;
+    private static final int REQUEST_PHONE_STATE = 11;
     DatabaseAdaptor DbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+
+        sMapFragment = SupportMapFragment.newInstance();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +83,7 @@ public class MainActivity extends AppCompatActivity
       b1.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              drawer.openDrawer(Gravity.START);
+              drawer.openDrawer(Gravity.LEFT);
           }
       });
 
@@ -70,8 +94,103 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+//
+//        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+//        collapsingToolbarLayout.setTitle(title);
+
+/**Testimonies Adapter**/
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar.inflateMenu(R.menu.main);
+//        toolbar.setOnMenuItemClickListener(this);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setHasFixedSize(true);
+
+        if (savedInstanceState == null) {
+            mHorizontal = true;
+        } else {
+            mHorizontal = savedInstanceState.getBoolean(ORIENTATION);
+        }
+
+        setupAdapter();
+
+
+
+
+/**Ripple Addiction Test**/
+        final RippleView rippleView = (RippleView) findViewById(R.id.more);
+        rippleView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "There is the Addiction Test! ", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+
+    permission();
 
         Slider();
+    }
+
+
+
+    /**Testimones **/
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(ORIENTATION, mHorizontal);
+    }
+
+    private void setupAdapter() {
+        List<App> apps = getApps();
+
+        SnapAdapter snapAdapter = new SnapAdapter();
+        if (mHorizontal) {
+            snapAdapter.addSnap(new Snap(Gravity.CENTER_HORIZONTAL, "Snap center", apps));
+            // snapAdapter.addSnap(new Snap(Gravity.START, "Snap start", apps));
+            // snapAdapter.addSnap(new Snap(Gravity.END, "Snap end", apps));
+        }
+//        else {
+//            snapAdapter.addSnap(new Snap(Gravity.CENTER_VERTICAL, "Snap center", apps));
+//            snapAdapter.addSnap(new Snap(Gravity.TOP, "Snap top", apps));
+//            snapAdapter.addSnap(new Snap(Gravity.BOTTOM, "Snap bottom", apps));
+//        }
+
+        mRecyclerView.setAdapter(snapAdapter);
+    }
+
+    private List<App> getApps() {
+        List<App> apps = new ArrayList<>();
+        apps.add(new App("Google+", R.drawable.ic_google_48dp, 4.6f));
+        apps.add(new App("Google+", R.drawable.ic_google_48dp, 4.6f));
+        apps.add(new App("Google+", R.drawable.ic_google_48dp, 4.6f));
+        apps.add(new App("Google+", R.drawable.ic_google_48dp, 4.6f));
+        apps.add(new App("Google+", R.drawable.ic_google_48dp, 4.6f));
+        apps.add(new App("Google+", R.drawable.ic_google_48dp, 4.6f));
+        return apps;
+    }
+
+
+
+
+
+
+
+
+
+
+    private void permission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PHONE_STATE);
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED ) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, REQUEST_PHONE_STATE);
+        }
+
     }
 
     @Override
@@ -110,10 +229,21 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction ft = fragmentManager.beginTransaction();
+
+
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+
+            ArticleandMenuDisplay reader=new ArticleandMenuDisplay();
+
+            ft.replace(R.id.content_frame,reader,"readerkey");
+            ft.commit();
+
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

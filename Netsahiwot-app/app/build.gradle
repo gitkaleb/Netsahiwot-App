@@ -24,19 +24,20 @@ dependencies {
 //    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
 //        exclude group: 'com.android.support', module: 'support-annotations'
 //    })
-    compile 'com.android.support:appcompat-v7:24.2.0'
-    compile 'com.android.support:design:24.2.0'
     //image slider
-    compile 'com.android.support:support-v4:+'
+    //recicler view
+
+
+
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:support-v4:24.2.1'
     compile 'com.squareup.picasso:picasso:2.3.2'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
-    //recicler view
-    compile 'com.android.support:recyclerview-v7:24.0.+'
-    compile 'com.android.support:design:24.0.0'
-    compile 'com.android.support:cardview-v7:24.0.0'
-    compile 'com.android.support:palette-v7:24.0.0'
-
-    compile 'me.tatarka.support:jobscheduler:0.1.1';
-
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
+    compile 'com.android.support:palette-v7:24.2.1'
+    compile 'me.tatarka.support:jobscheduler:0.1.1'
+    compile 'com.github.Hitta:RippleEffect:82cf00e551'
 }

@@ -5,7 +5,7 @@
     android:id="@+id/activity_articleand_post_display"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gcme.netsahiwot.netsahiwot.ArticleandMenuDisplay">
+    tools:context="com.example.mnm.netsahiwot_app.ArticleandMenuDisplay">
 
     <RelativeLayout
         android:id="@+id/headerimage"

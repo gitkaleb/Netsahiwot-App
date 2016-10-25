@@ -9,55 +9,84 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.mnm.netsahiwot_app.MainActivity"
     tools:showIn="@layout/app_bar_main">
-<RelativeLayout
 
-    android:id="@+id/sliderlayout"
-    android:layout_width="match_parent"
-    android:layout_height="250dp"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true">
+    <RelativeLayout
 
-    <com.daimajia.slider.library.Indicators.PagerIndicator
-        android:id="@+id/custom_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        custom:selected_color="#0095BF"
-        custom:unselected_color="#55333333"
-        custom:shape="oval"
-        custom:selected_padding_left="5dp"
-        custom:selected_padding_right="5dp"
-        custom:unselected_padding_left="5dp"
-        custom:unselected_padding_right="5dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        custom:selected_width="6dp"
-        custom:selected_height="6dp"
-        custom:unselected_width="6dp"
-        custom:unselected_height="6dp"
-        android:layout_marginBottom="20dp"
-        />
-    <com.daimajia.slider.library.Indicators.PagerIndicator
-        android:id="@+id/custom_indicator2"
-        style="@style/AndroidImageSlider_Corner_Oval_Orange"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        />
+        android:id="@+id/sliderlayout"
+        android:layout_width="384dp"
+        android:layout_height="250dp"
+
+        tools:layout_conversion_absoluteX="0dp"
+        tools:layout_conversion_absoluteY="0dp"
+        tools:layout_conversion_absoluteWidth="384dp"
+        tools:layout_conversion_absoluteHeight="250dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp">
+
+        <com.daimajia.slider.library.Indicators.PagerIndicator
+            android:id="@+id/custom_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            custom:selected_color="#0095BF"
+            custom:unselected_color="#55333333"
+            custom:shape="oval"
+            custom:selected_padding_left="5dp"
+            custom:selected_padding_right="5dp"
+            custom:unselected_padding_left="5dp"
+            custom:unselected_padding_right="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            custom:selected_width="6dp"
+            custom:selected_height="6dp"
+            custom:unselected_width="6dp"
+            custom:unselected_height="6dp"
+            android:layout_marginBottom="20dp" />
+
+        <com.daimajia.slider.library.Indicators.PagerIndicator
+            android:id="@+id/custom_indicator2"
+            style="@style/AndroidImageSlider_Corner_Oval_Orange"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp" />
 
 
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            custom:pager_animation="Accordion"
+            custom:auto_cycle="true"
+            custom:indicator_visibility="visible"
+            custom:pager_animation_span="1100"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_height="match_parent">
 
-    <com.daimajia.slider.library.SliderLayout
-        android:id="@+id/slider"
+        </com.daimajia.slider.library.SliderLayout>
+    </RelativeLayout>
+
+    <com.andexert.library.RippleView
+        android:id="@+id/more"
+        android:layout_width="?android:actionBarSize"
+        android:layout_height="?android:actionBarSize"
+        rv_centered="true"
+
+        android:layout_below="@+id/sliderlayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    <Button
+        android:text="ADDICTION TEST"
         android:layout_width="match_parent"
-        custom:pager_animation="Accordion"
-        custom:auto_cycle="true"
-        custom:indicator_visibility="visible"
-        custom:pager_animation_span="1100"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"
-        android:layout_height="match_parent" >
+        android:layout_height="50dp"
+        android:textColor="@color/white"
+        android:background="@color/orange"
+        android:layout_centerVertical="true"
+        android:id="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    </com.daimajia.slider.library.SliderLayout>
-    </RelativeLayout>
-    </RelativeLayout>
+    </com.andexert.library.RippleView>
+</RelativeLayout>

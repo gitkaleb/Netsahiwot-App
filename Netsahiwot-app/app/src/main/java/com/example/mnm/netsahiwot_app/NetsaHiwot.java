@@ -1,8 +1,12 @@
 package com.example.mnm.netsahiwot_app;
 
+import android.Manifest;
 import android.app.Application;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
 
@@ -24,9 +28,12 @@ public class NetsaHiwot extends Application {
 
     @Override
     public void onCreate() {
+
         super.onCreate();
         DatabaseAdaptor DbHelper;
         DbHelper = new DatabaseAdaptor(this);
+
+
 
         FM=new FileManager(this);
         Intent intent = new Intent(this, SyncService.class);
@@ -41,6 +48,7 @@ public class NetsaHiwot extends Application {
     }
 
     public void JobConstr(){
+
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, new ComponentName(this,SyncService.class));
         builder.setPeriodic(100000);
         builder.setBackoffCriteria(500,1);
